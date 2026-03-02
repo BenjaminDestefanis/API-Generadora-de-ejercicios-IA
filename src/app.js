@@ -6,6 +6,8 @@ const app = express();
 const testRoutes = require('./routes/testRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const exerciseRoutes = require('./routes/exerciseRoutes');
+
 
 //console.log(typeof authRoutes, typeof testRoutes)
 
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use('/api', testRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/exercises', exerciseRoutes);
 
 app.get('/', (req, res) => {
   res.send('API funcionando 🚀');

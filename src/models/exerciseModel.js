@@ -38,8 +38,20 @@ const getExerciseById = async (id) => {
   return result.rows[0];
 };
 
+
+const countUserExercisesToday = async (userId) => {
+    const result = await pool.query(
+    `SELECT COUNT(*) FROM exercises
+     WHERE user_id = $1
+     AND created_at::date = CURRENT_DATE`,
+    [userId]
+  );
+  return parseInt(result.rows[0].count);    
+    
+};
 module.exports = {
   createExercise,
   getExercisesByUser,
-  getExerciseById
+  getExerciseById,
+  countUserExercisesToday
 };
